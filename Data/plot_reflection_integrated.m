@@ -5,13 +5,13 @@
 figure(4);
 clf;
 
-load('GlassReflectionIntegrated.mat');
+load('./Bare Glass/GlassReflectionIntegrated.mat');
 dataBare = data;
 plot(dataBare(1,:), dataBare(2,:), 'Color', [0.4940 0.1840 0.5560], 'LineStyle', '-');
 
 
 hold on;
-load('ThinFilmReflectionIntegrated.mat');
+load('TThinFilmReflectionIntegrated.mat');
 dataTF = data;
 plot(dataTF(1,:), dataTF(2,:), 'b-.');
 
