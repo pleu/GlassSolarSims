@@ -102,8 +102,8 @@ ylabel('R_{solar} (%)');
 %hold on;
 %plot(sraAvg.VariableArray.Values, reflection, 'g:');
 
-reflectionIntegrated = [thetaValues 90; id.ReflectionIntegrated];
-save('NWReflectionIntegrated', 'reflectionIntegrated');
+data = [thetaValues 90; id.ReflectionIntegrated];
+save('NWReflectionIntegrated', 'data');
 
 % 
 figure(5);

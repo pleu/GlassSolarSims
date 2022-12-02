@@ -102,8 +102,8 @@ legend boxoff;
 
 axis([0 80 0 20]);
 
-reflectionIntegrated = [thetaValues 90; id.ReflectionIntegrated];
-save('GlassReflectionIntegrated', 'reflectionIntegrated');
+data = [thetaValues 90; id.ReflectionIntegrated];
+save('GlassReflectionIntegrated', 'data');
 
 
 figure(5);

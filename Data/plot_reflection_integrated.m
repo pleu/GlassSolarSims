@@ -1,27 +1,26 @@
-
+clear;
  hold on;
 % N = NCRreflectionIntegrated(:,:);
 
 figure(4);
 clf;
 
-load('./Bare Glass/GlassReflectionIntegrated.mat');
+load('./BareGlass/GlassReflectionIntegrated.mat');
 dataBare = data;
 plot(dataBare(1,:), dataBare(2,:), 'Color', [0.4940 0.1840 0.5560], 'LineStyle', '-');
 
-
 hold on;
-load('TThinFilmReflectionIntegrated.mat');
+load('./ThinFilm/ThinFilmReflectionIntegrated.mat');
 dataTF = data;
 plot(dataTF(1,:), dataTF(2,:), 'b-.');
 
 hold on;
-load('NWReflectionIntegrated.mat');
+load('./Nanowire/NWReflectionIntegrated.mat');
 dataNW = data;
 plot(dataNW(1,:), dataNW(2,:), 'g:');
 
 hold on;
-load('NCReflectionIntegrated.mat');
+load('./Nanocone/NCReflectionIntegrated.mat');
 dataNC = data;
 plot(dataNC(1,:), dataNC(2,:), 'r--');
 
