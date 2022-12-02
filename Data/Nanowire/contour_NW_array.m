@@ -74,6 +74,16 @@ sraAvg = sraAvg.mirror;
 sraAvg.contour('Wavelength', 'Theta', 'Reflection',200,0, 'polar');
 caxis([0 10]);
 colorbar;
+
+reflectionMat = zeros(sraAvg.VariableArray.NumValues, sraAvg.Simulations(1).ReflectionResults.NumFrequency);
+for i = 1:sraAvg.VariableArray.NumValues
+  reflectionMat(i, :) = sraAvg.Simulations(i).ReflectionResults.Data;
+end
+thetaVec = sraAvg.VariableArray.Values;
+lambdaVec = sraAvg.Simulations(1).ReflectionResults.Wavelength;
+save('NWReflectionWavelength', 'thetaVec', 'lambdaVec', 'reflectionMat');
+
+
 %axes('Color','none','YColor','none');
 
 % reflection = zeros(length(sraAvg.VariableArray.Values), 1);
@@ -92,8 +102,8 @@ ylabel('R_{solar} (%)');
 %hold on;
 %plot(sraAvg.VariableArray.Values, reflection, 'g:');
 
-data = [thetaValues 90; id.ReflectionIntegrated];
-save('NWReflectionIntegrated', 'data');
+reflectionIntegrated = [thetaValues 90; id.ReflectionIntegrated];
+save('NWReflectionIntegrated', 'reflectionIntegrated');
 
 % 
 figure(5);

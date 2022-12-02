@@ -74,6 +74,16 @@ sraAvg.contour('Wavelength', 'Theta', 'Reflection',200,0, 'polar');
 caxis([0 10]);
 colorbar;
 
+
+reflectionMat = zeros(sraAvg.VariableArray.NumValues, sraAvg.Simulations(1).ReflectionResults.NumFrequency);
+for i = 1:sraAvg.VariableArray.NumValues
+  reflectionMat(i, :) = sraAvg.Simulations(i).ReflectionResults.Data;
+end
+thetaVec = sraAvg.VariableArray.Values;
+lambdaVec = sraAvg.Simulations(1).ReflectionResults.Wavelength;
+save('NCReflectionWavelength', 'thetaVec', 'lambdaVec', 'reflectionMat');
+
+
 % reflection = zeros(length(sraAvgPhi.VariableArray.Values), 1);
 % for j = 1:length(sraAvgPhi.VariableArray.Values)
 %   reflection(j) = SolarCell.calculate_integrated_data(ss,...

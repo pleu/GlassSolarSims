@@ -68,7 +68,18 @@ colorbar;
 
 figure(3);
 clf;
-sraAvgMirror = sraAvg.mirror;
+% Create table
+reflectionMat = zeros(sraAvg.VariableArray.NumValues, sraAvg.Simulations(1).ReflectionResults.NumFrequency);
+for i = 1:sraAvg.VariableArray.NumValues
+  reflectionMat(i, :) = sraAvg.Simulations(i).ReflectionResults.Data;
+end
+thetaVec = sraAvg.VariableArray.Values;
+lambdaVec = sraAvg.Simulations(1).ReflectionResults.Wavelength;
+save('GlassReflectionWavelength', 'thetaVec', 'lambdaVec', 'reflectionMat');
+
+
+%sraAvgMirror = sraAvg.mirror;
+sraAvgMirror = sraAvg;
 sraAvgMirror.contour('Wavelength', 'Theta', 'Reflection',200,0, 'polar');
 caxis([0 10]);
 colorbar;
@@ -91,8 +102,8 @@ legend boxoff;
 
 axis([0 80 0 20]);
 
-data = [thetaValues 90; id.ReflectionIntegrated]
-save('GlassReflectionIntegrated', 'data');
+reflectionIntegrated = [thetaValues 90; id.ReflectionIntegrated];
+save('GlassReflectionIntegrated', 'reflectionIntegrated');
 
 
 figure(5);
@@ -114,6 +125,8 @@ scArrayWithPhi.contour_solarCellArray('Theta', 'Phi', 'Reflection', 200, 0,...
 
 colorbar;
 caxis([0 10]);
+
+
 
 % 
 % 

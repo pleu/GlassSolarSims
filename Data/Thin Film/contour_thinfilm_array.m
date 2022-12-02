@@ -74,6 +74,16 @@ sraAvg.contour('Wavelength', 'Theta', 'Reflection',200,0, 'polar');
 caxis([0 10]);
 colorbar;
 
+reflectionMat = zeros(sraAvg.VariableArray.NumValues, sraAvg.Simulations(1).ReflectionResults.NumFrequency);
+for i = 1:sraAvg.VariableArray.NumValues
+  reflectionMat(i, :) = sraAvg.Simulations(i).ReflectionResults.Data;
+end
+thetaVec = sraAvg.VariableArray.Values;
+lambdaVec = sraAvg.Simulations(1).ReflectionResults.Wavelength;
+save('ThinFilmReflectionWavelength', 'thetaVec', 'lambdaVec', 'reflectionMat');
+
+
+
 
 figure(4);
 
